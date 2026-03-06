@@ -1,0 +1,10 @@
+
+# Author    Martin Dubois, P. Eng
+# Copyright (C) 2026 Martin Dubois
+# License   http://www.apache.org/licenses/LICENSE-2.0
+# Product   TLBoDP
+# File      .gitignore
+
+# ===== Visual Studio =======================================================
+
+/.vs/
