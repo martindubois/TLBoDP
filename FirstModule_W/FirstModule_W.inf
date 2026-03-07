@@ -1,0 +1,62 @@
+;
+; FirstModule_W.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System ; TODO: specify appropriate Class
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider    = %ManufacturerName%
+CatalogFile = FirstModule_W.cat
+DriverVer   = ; TODO: set DriverVer in stampinf property pages
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+FirstModule_W.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%FirstModule_W.DeviceDesc% = FirstModule_W_Device, Root\FirstModule_W ; TODO: edit hw-id
+
+[FirstModule_W_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+FirstModule_W.sys
+
+;-------------- Service installation
+[FirstModule_W_Device.NT.Services]
+AddService = FirstModule_W,%SPSVCINST_ASSOCSERVICE%, FirstModule_W_Service_Inst
+
+; -------------- FirstModule_W driver install sections
+[FirstModule_W_Service_Inst]
+DisplayName    = %FirstModule_W.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\FirstModule_W.sys
+
+[FirstModule_W_Device.NT.Wdf]
+KmdfService = FirstModule_W, FirstModule_W_wdfsect
+
+[FirstModule_W_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "FirstModule_W Installation Disk"
+FirstModule_W.DeviceDesc = "FirstModule_W Device"
+FirstModule_W.SVCDESC = "FirstModule_W Service"
