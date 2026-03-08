@@ -1,0 +1,11 @@
+-ffreestanding
+-fno-asynchronous-unwind-tables
+-fno-builtin
+-fno-exceptions
+-fno-pic
+-fno-stack-check
+-funit-at-a-time
+-m64
+-mcmodel=kernel
+-nostdinc
+-O2

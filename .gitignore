@@ -5,6 +5,25 @@
 # Product   TLBoDP
 # File      .gitignore
 
+# ===== Linux ===============================================================
+
+.Module.symvers.cmd
+.module-common.o
+.modules.order.cmd
+
+Module.symvers
+modules.order
+
+.*.ko.cmd
+.*.mod.cmd
+.*.o.cmd
+
+*.a
+*.ko
+*.mod
+*.mod.c
+*.o
+
 # ===== Visual Studio =======================================================
 
 /.vs/

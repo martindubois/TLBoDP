@@ -1,0 +1,27 @@
+
+# Author    KMS - Martin Dubois, P. Eng.
+# Copyright (C) 2026 KMS
+# License   http://www.apache.org/licenses/LICENSE-2.0
+# Product   TLBoDP
+# File      FirstModule/makefile_cpp
+
+CFLAGS = @../Args/Kernel.args
+
+OUTPUT = FirstModule_K.a
+
+CPP_SOURCES = Driver.cpp
+
+# ===== Rules ===============================================================
+
+.cpp.o:
+	g++ -c $(CFLAGS) -fno-rtti -o $@ $(INCLUDES) $<
+
+# ===== Macros ==============================================================
+
+CPP_OBJECTS = $(CPP_SOURCES:.cpp=.o)
+
+# ===== Targets =============================================================
+
+$(OUTPUT) : $(CPP_OBJECTS)
+	ar r $@ $^
+	ranlib $@
