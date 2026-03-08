@@ -19,12 +19,12 @@ Book of Driver Programming**.
 
     ===== Francais =====
 
-Ce depot contient les exemples et le code presente dans **Le petit livre de
+Ce depot contient les exemples et le code presentes dans **Le petit livre de
 la programation de pilote**.
 
 [Introduction](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Introduction.pdf)
 
-[Chapitre 1 - Connaissance prealable](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_ConnaissancePrealable.pdf)
+[Chapitre 1 - Connaissances prealables](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_ConnaissancesPrealables.pdf)
 
 [Chapitre 2 - Premier module](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_PremierModule.pdf)
 
