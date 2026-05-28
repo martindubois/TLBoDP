@@ -116,6 +116,9 @@
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Driver_W.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Common\Version.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
