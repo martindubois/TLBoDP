@@ -1,0 +1,6 @@
+
+Author    KMS - Martin Dubois, P. Eng.
+Copyright (C) 2026 KMS
+Lisense   http://www.apache.org/licenses/LICENSE-2.0
+Product   TLBoDP
+File      TLBoDP_K/_DocUser/TLBoDP.TLBoDP_K.ReadMe.txt
