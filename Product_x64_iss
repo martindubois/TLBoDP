@@ -1,0 +1,34 @@
+
+; Author    KMS - Martin Dubois, P. Eng.
+; Copyright (C) 2026 KMS
+; Lisense   http://www.apache.org/licenses/LICENSE-2.0
+; Product   TLBoDP
+; File      Product_x64.iss
+
+[Setup]
+AllowNetworkDrive=no
+AllowUNCPath=no
+AppCopyright=Copyright (C) 2026 KMS.
+AppName=TLBoDP
+AppPublisher=KMS
+AppPublisherURL=http://www.kms-quebec.com
+AppSupportURL=http://www.kms-quebec.com
+AppVersion=0.0.0
+ArchitecturesAllowed=x64os
+ArchitecturesInstallIn64BitMode=x64os
+DefaultDirName={commonpf}\TLBoDP
+LicenseFile=License.txt
+MinVersion=10.0
+OutputBaseFilename=TLBoDP_0.0.0_x64
+OutputDir=Installer
+Signtool=KMS $f
+
+[Files]
+Source: "_DocUser\Documentation.html"                       ; DestDir: "{app}"; Flags: isreadme
+Source: "_DocUser\TLBoDP.ReadMe.txt"                        ; DestDir: "{app}"
+Source: "TLBoDP_K\_DocUser\TLBoDP.TLBoDP_K.ReadMe.txt"      ; DestDir: "{app}"
+Source: "Includes\*.h"                                      ; DestDir: "{app}\Includes"
+Source: "x64\Debug\TLBoDP_K.lib"                            ; DestDir: "{app}\Libraries\Debug_x64"
+Source: "x64\Debug\TLBoDP_K.pdb"                            ; DestDir: "{app}\Libraries\Debug_x64"
+Source: "x64\Release\TLBoDP_K.lib"                          ; DestDir: "{app}\Libraries\Release_x64"
+Source: "x64\Release\TLBoDP_K.pdb"                          ; DestDir: "{app}\Libraries\Release_x64"
