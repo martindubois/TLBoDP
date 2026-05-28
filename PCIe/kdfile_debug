@@ -1,0 +1,12 @@
+
+# Author    KMS - Martin Dubois, P. Eng.
+# Copyright (C) 2026 KMS
+# License   http://www.apache.org/licenses/LICENSE-2.0
+# Product   TLBoDP
+# File      PCIe/kdfile_debug
+
+# .kdfiles C:\_VC\TLBoDP\PCIe\kdfile_debug
+
+map
+PCIe.sys
+C:\_VC\TLBoDP\x64\Debug\PCIe.sys

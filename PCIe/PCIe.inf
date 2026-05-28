@@ -1,0 +1,87 @@
+
+; Author    KMS - Martin Dubois, P. Eng.
+; Copyright (C) 2026 KMS
+; License   http://www.apache.org/licenses/LICENSE-2.0
+; Product   TLBoDP
+; File      PCIe/PCIe.inf
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = %ClassName%
+ClassGuid   = {5376C901-7FCF-4BCE-8377-3D7EC2317D8F}
+Provider    = %ManufacturerName%
+CatalogFile = PCIe.cat
+DriverVer   = 14/03/2026,0.0.0.0
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%, , , ""
+
+[SourceDisksFiles]
+PCIe.sys = 1, ,
+
+; ===== Class ===============================================================
+
+[ClassInstall32]
+Addreg = ClassReg
+
+[ClassReg]
+HKR, , , 0, %ClassName%
+HKR, , Icon, , -5
+HKR, , Security, , "D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;AU)"
+
+; ===== Device list =========================================================
+
+[Manufacturer]
+%ManufacturerName% = Standard, NT$ARCH$.10.0...16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%DeviceDesc% = Device, PCI\VEN_8086&DEV_10C9
+
+; ===== Device ==============================================================
+
+[Device.NT]
+CopyFiles = Device.CopyFile
+
+[Device.NT.HW]
+AddReg = Device.HW.AddReg
+
+[Device.CopyFile]
+PCIe.sys
+
+[Device.HW.AddReg]
+HKR, Interrupt Management                                   ,             , 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,             , 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+
+; ===== Service =============================================================
+
+[Device.NT.Services]
+AddService = PCIe, 0x00000002, Device.Service
+
+[Device.Service]
+DisplayName   = %ServiceDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %13%\PCIe.sys
+
+; ===== WDF =================================================================
+
+[Device.NT.Wdf]
+KmdfService = PCIe, PCIe_wdfsect
+
+[PCIe_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+; ===== Strings =============================================================
+
+[Strings]
+ClassName        = "PCIe Class"
+DeviceDesc       = "PCIe Device"
+DiskName         = "PCIe Installation Disk"
+ManufacturerName = "KMS"
+ServiceDesc      = "PCIe Service"

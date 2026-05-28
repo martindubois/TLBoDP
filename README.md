@@ -1,3 +1,4 @@
+
     Author    KMS - Martin Dubois, P. Eng.
     Copyright (C) 2026 KMS
     Lisense   http://www.apache.org/licenses/LICENSE-2.0
@@ -13,9 +14,9 @@ Book of Driver Programming**.
 
 [Chapter 1 - Prior Knowledge](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter01_PriorKnowledge.pdf)
 
-[Chapter 2 - First Module](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter01_FirstModule.pdf)
+[Chapter 2 - First Module](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter02_FirstModule.pdf)
 
-[Chapter 3 - PCIe Driver](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter01_PCIeDriver.pdf)
+[Chapter 3 - PCIe Driver](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter03_PCIeDriver.pdf)
 
     ===== Francais =====
 
@@ -26,6 +27,6 @@ la programation de pilote**.
 
 [Chapitre 1 - Connaissances prealables](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_ConnaissancesPrealables.pdf)
 
-[Chapitre 2 - Premier module](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_PremierModule.pdf)
+[Chapitre 2 - Premier module](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre02_PremierModule.pdf)
 
-[Chapitre 3 - Pilote PCIe](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_PilotePCIe.pdf)
+[Chapitre 3 - Pilote PCIe](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre03_PilotePCIe.pdf)
