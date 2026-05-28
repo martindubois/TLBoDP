@@ -5,6 +5,9 @@
 # Product   TLBoDP
 # File      .gitignore
 
+/doxygen_en/
+/Import/
+
 # ===== Linux ===============================================================
 
 .Module.symvers.cmd
