@@ -54,7 +54,7 @@ NTSTATUS Device_Add(WDFDRIVER, PWDFDEVICE_INIT aDeviceInit)
 
     WDFDEVICE lDevice;
 
-    auto lRet = TLBoDP_Device_PCIe_New(aDeviceInit, 0, &lDevice);
+    auto lRet = TLBoDP_Device_PCIe_New(0, aDeviceInit, &lDevice);
     ASSERT(nullptr != lDevice);
     (void)lDevice;
 
@@ -75,11 +75,7 @@ NTSTATUS D0Entry(WDFDEVICE aDevice, WDF_POWER_DEVICE_STATE aPreviousState)
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(aDevice);
     ASSERT(nullptr != lThis);
 
-    // INSTRUCTION  Add the needed code here. If no code is needed, remove
-    //              the D0Entry function and use
-    //              TLBoDP_Device_PCIe_D0Entry_W.
-
-    auto lRet = TLBoDP_Device_PCIe_D0Entry(lThis);
+    auto lRet = Device_D0Entry(lThis);
 
     return TLBoDP_Result_To_NTSTATUS(lRet);
 }
@@ -93,10 +89,7 @@ NTSTATUS D0Exit(WDFDEVICE aDevice, WDF_POWER_DEVICE_STATE aTargetState)
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(aDevice);
     ASSERT(nullptr != lThis);
 
-    // INSTRUCTION  Add the needed code here. If no code is needed, remove
-    //              the D0Exit function and use TLBoDP_Device_PCIe_D0Exit_W.
-
-    TLBoDP_Device_PCIe_D0Exit(lThis);
+    Device_D0Exit(lThis);
 
     return STATUS_SUCCESS;
 }
@@ -110,13 +103,9 @@ NTSTATUS PrepareHardware(WDFDEVICE aDevice, WDFCMRESLIST aRaw, WDFCMRESLIST aTra
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(aDevice);
     ASSERT(nullptr != lThis);
 
-    auto lRet = TLBoDP_Device_PCIe_PrepareHardware(lThis, aRaw, aTranslated);
-    if (TLBoDP_OK == lRet)
-    {
-        // INSTRUCTION  Add the needed code here. If no code is needed,
-        //              remove the PrepareHardware function and use
-        //              TLBoDP_Device_PCIe_PrepareHardware_W.
-    }
+    TLBoDP_Device_PCIEe_SetResouceLists(lThis, aRaw, aTranslated);
+
+    auto lRet = Device_PrepareHardware(lThis);
 
     return TLBoDP_Result_To_NTSTATUS(lRet);
 }
@@ -130,11 +119,7 @@ NTSTATUS ReleaseHardware(WDFDEVICE aDevice, WDFCMRESLIST)
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(aDevice);
     ASSERT(nullptr != lThis);
 
-    // INSTRUCTION  Add the needed code here. If no code is needed, remove
-    //              the ReleaseHardware function and use
-    //              TLBoDP_Device_PCIe_ReleaseHardware_W.
-
-    TLBoDP_Device_PCIe_ReleaseHardware(lThis);
+    Device_ReleaseHardware(lThis);
 
     return STATUS_SUCCESS;
 }

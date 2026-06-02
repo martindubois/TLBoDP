@@ -13,6 +13,18 @@
 // Functions
 // //////////////////////////////////////////////////////////////////////////
 
+void TLBoDP_Device_Init(TLBoDP_Device* aThis)
+{
+    aThis->mState = TLBoDP_DEVICE_CREATED;
+
+    TLBoDP_Callback_List_Init(&aThis->mCallbacks, aThis);
+}
+
+void TLBoDP_Device_Uninit(TLBoDP_Device* aThis)
+{
+    TLBoDP_Callback_List_Uninit(&aThis->mCallbacks);
+}
+
 TLBoDP_Result TLBoDP_Device_D0Entry(TLBoDP_Device* aThis)
 {
     ASSERT((TLBoDP_DEVICE_PREPARED == aThis->mState) || (TLBoDP_DEVICE_OFF == aThis->mState));
@@ -43,11 +55,4 @@ void TLBoDP_Device_ReleaseHardware(TLBoDP_Device* aThis)
     ASSERT((TLBoDP_DEVICE_OFF == aThis->mState) || (TLBoDP_DEVICE_PREPARED == aThis->mState));
 
     aThis->mState = TLBoDP_DEVICE_RELEASED;
-}
-
-void Device_Init(TLBoDP_Device* aThis)
-{
-    aThis->mState = TLBoDP_DEVICE_CREATED;
-
-    TLBoDP_Callback_List_Init(&aThis->mCallbacks, aThis);
 }

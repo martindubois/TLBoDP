@@ -11,6 +11,7 @@
 
     // ===== Includes =======================================================
     #include <TLBoDP_Assert_L.h>
+    #include <TLBoDP_StdTypes.h>
 
 #endif
 
@@ -26,5 +27,7 @@
 
 // Constants
 // //////////////////////////////////////////////////////////////////////////
+
+#define MODULE_NAME "PCIe"
 
 #define PREFIX "PCIe: "

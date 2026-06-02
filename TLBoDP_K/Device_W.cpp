@@ -66,7 +66,7 @@ TLBoDP_Result TLBoDP_Device_New(WDFDEVICE_INIT* aDeviceInit, unsigned int aConte
 
         lThis->mDevice = lDevice;
 
-        Device_Init(lThis);
+        TLBoDP_Device_Init(lThis);
 
         *aDevice = lDevice;
     }

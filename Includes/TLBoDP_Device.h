@@ -60,6 +60,22 @@ TLBoDP_Device;
 // Functions
 // //////////////////////////////////////////////////////////////////////////
 
+/// \brief Initialize an allocated TLBoDP_Device instance
+/// \param aThis The TLBoDP_Device instance
+/// \see TLBoDP_Device_New
+///
+/// This function is called from TLBoDP_Device_New and the driver code
+/// should not call it directly.
+extern void TLBoDP_Device_Init(TLBoDP_Device* aThis);
+
+/// \brief Uninitialize a TLBoDP_Device instance
+/// \param aThis The TLBoDP_Device instance
+/// \see TLBoDP_Device_Delete
+///
+/// This function is called from TLBoDP_Device_Delete and the driver code
+/// should not call it directly.
+extern void TLBoDP_Device_Uninit(TLBoDP_Device* aThis);
+
 /// \brief TLBoDP_STATE_PREPARED --> TLBoDP_STATE_D0
 /// \param aThis The TLBoDP_Device instance
 /// \retval TLPoDP_OK

@@ -28,16 +28,16 @@ struct TLBoDevice_s;
 extern struct TLBoDP_Device_s* TLBoDP_Device_From_WDFDEVICE(WDFDEVICE aDevice);
 
 /// \brief Create a new device
-/// \param aDeviceInit       See WDFDEVICE_INIT
-/// \param aContextSize_byte The context size or 0 is the TLBoDP_Device is
-///                          used as context.
-/// \param aDevice           The function return the WDFDEVICE instance here
+/// \param aSize_byte  The context size or 0 is the TLBoDP_Device is used as
+///                    context.
+/// \param aDeviceInit See WDFDEVICE_INIT
+/// \param aDevice     The function return the WDFDEVICE instance here
 /// \retval TLBoDP_OK
 ///
 /// To use in Windows code from the EVT_WDF_DRIVER_DEVICE_ADD entry point
 ///
 /// KMDF is reponsible for deleting the TLBoDP_Device instance.
-extern TLBoDP_Result TLBoDP_Device_New(WDFDEVICE_INIT* aDeviceInit, unsigned int aContextSize_byte, WDFDEVICE* aDevice);
+extern TLBoDP_Result TLBoDP_Device_New(unsigned int aSize_byte, WDFDEVICE_INIT* aDeviceInit, WDFDEVICE* aDevice);
 
 // ===== Direct Windows entry points ========================================
 

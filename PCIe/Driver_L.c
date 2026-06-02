@@ -9,21 +9,20 @@
 
 // ===== Linux kernel =======================================================
 #include <linux/module.h>
+#include <linux/pci.h>
 
 // ===== Local ==============================================================
-#incude "Device_L.h"
+#include "Device_L.h"
 
 // Constants
 // //////////////////////////////////////////////////////////////////////////
 
 static struct pci_device_id ID_TABLE[] =
 {
-    { PCI_DEVICE(0x8086, 0x10D3), },
+    { PCI_DEVICE(0x8086, 0x15a1), },
 
     { 0, }
 };
-
-#define MODULE_NAME "PCIe"
 
 // Static function declarations
 // //////////////////////////////////////////////////////////////////////////
@@ -42,6 +41,8 @@ static struct pci_driver sPciDriver =
     .id_table = ID_TABLE,
     .probe    = Device_Probe,
     .remove   = Device_Remove,
+    .resume   = Device_Resume,
+    .suspend  = Device_Suspend,
 };
 
 // Static functions

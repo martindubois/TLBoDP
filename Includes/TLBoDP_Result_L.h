@@ -9,7 +9,7 @@
 #pragma once
 
 // ===== Includes ===========================================================
-#include <TLBoPD_Result.h>
+#include <TLBoDP_Result.h>
 
 #ifdef __cplusplus
     extern "C" {

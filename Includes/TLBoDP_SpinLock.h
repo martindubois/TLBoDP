@@ -12,6 +12,11 @@
     extern "C" {
 #endif
 
+#if defined( _TLBoDP_LINUX_ ) && defined( MODULE )
+    // ===== Linux ==========================================================
+    #include <linux/spinlock.h>
+#endif
+
 struct TLBoDP_Device_s;
 
 // Data types

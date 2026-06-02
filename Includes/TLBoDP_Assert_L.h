@@ -24,11 +24,11 @@
     /// \param C Condition
     ///
     /// To use in Linux C code.
-    #define ASSERT(C)                                               \
-        if (!(C))                                                   \
-        {                                                           \
-            printk(KERN_ERR PREFIX "%s %s (%u) - Assert failure\n", \
-                __FILE__, __FUNCTION__, __LINE__);                  \
+    #define ASSERT(C)                                                \
+        if (!(C))                                                    \
+        {                                                            \
+            printk(KERN_ERR "TLBoDP: %s %s (%u) - Assert failure\n", \
+                __FILE__, __FUNCTION__, __LINE__);                   \
         }
 
 #else

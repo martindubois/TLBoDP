@@ -15,7 +15,7 @@
 
 static bool IsFree    (TLBoDP_Callback* aThis);
 static bool IsSelected(TLBoDP_Callback* aThis, void* aSender, uint32_t aType);
-static bool IsSelected(TLBoDP_Callback* aThis, void* aSneder, uint32_t aTypes, void* aFunction, void* aContext);
+static bool IsSelected(TLBoDP_Callback* aThis, void* aSneder, uint32_t aTypes, TLBoDP_Callback_Function aFunction, void* aContext);
 static bool IsSelected(TLBoDP_Callback* aThis,                uint32_t aType);
 
 static void Register  (TLBoDP_Callback* aThis, void* aSender, uint32_t aTypes, TLBoDP_Callback_Function aFunction, void* aContext);
@@ -90,6 +90,11 @@ void TLBoDP_Callback_List_Init(TLBoDP_Callback_List* aThis, struct TLBoDP_Device
     aThis->mActualDepth = 0;
 
     TLBoDP_SpinLock_Init(&aThis->mZone0, aDevice);
+}
+
+void TLBoDP_Callback_List_Uninit(TLBoDP_Callback_List* aThis)
+{
+    aThis->mActualDepth = 0;
 }
 
 TLBoDP_Result TLBoDP_Callback_List_Call(TLBoDP_Callback_List* aThis, void* aSender, uint32_t aType)
@@ -246,7 +251,7 @@ bool IsSelected(TLBoDP_Callback* aThis, void* aSender, uint32_t aType)
     return IsSelected(aThis, aType) && (aSender == aThis->mSender);
 }
 
-bool IsSelected(TLBoDP_Callback* aThis, void* aSender, uint32_t aTypes, void* aFunction, void* aContext)
+bool IsSelected(TLBoDP_Callback* aThis, void* aSender, uint32_t aTypes, TLBoDP_Callback_Function aFunction, void* aContext)
 {
     ASSERT(nullptr != aFunction);
     ASSERT(0 != aTypes);

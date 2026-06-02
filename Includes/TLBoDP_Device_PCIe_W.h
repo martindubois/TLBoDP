@@ -38,10 +38,10 @@ extern struct TLBoDP_Device_PCIe_s* TLBoDP_Device_PCIe_From_WDFDEVICE(WDFDEVICE 
 extern struct TLBoDP_Device_PCIe_s* TLBoDP_Device_PCIe_From_WDFINTERRUPT(WDFINTERRUPT aInterrupt);
 
 /// \brief Create a new device
-/// \param aDeviceInit       See WDFDEVICE_INIT
-/// \param aContextSize_byte The context size or 0 is the TLBoDP_Device_PCIe
-///                          is used as context.
-/// \param aDevice           The function return the WDFDEVICE instance here
+/// \param aSize_byte  The context size or 0 is the TLBoDP_Device_PCIe is
+///                    used as context.
+/// \param aDeviceInit See WDFDEVICE_INIT
+/// \param aDevice     The function return the WDFDEVICE instance here
 /// \retval TLBoDP_OK
 /// \see TLBoDP_Device_New
 ///
@@ -54,18 +54,17 @@ extern struct TLBoDP_Device_PCIe_s* TLBoDP_Device_PCIe_From_WDFINTERRUPT(WDFINTE
 /// the aContextSize_byte argument to indicate the size of the derived class.
 ///
 /// KMDF is reponsible for deleting the TLBoDP_Device instance.
-extern TLBoDP_Result TLBoDP_Device_PCIe_New(WDFDEVICE_INIT* aDeviceInit, unsigned int aContextSize_byte, WDFDEVICE* aDevice);
+extern TLBoDP_Result TLBoDP_Device_PCIe_New(unsigned int aSize_byte, WDFDEVICE_INIT* aDeviceInit, WDFDEVICE* aDevice);
 
-/// \brief TLBoDP_STATE_CREATED --> TLBoDP_STATE_PREPARED
+/// \brief Store the resources list to be used by TLBoDP_Device_PCIe_Prepare
 /// \param aThis       The TLBoDP_Device instance
 /// \param aRaw        See EVT_WDF_DEVICE_PREPARE_HARDWARE
 /// \param aTranslated See EVT_WDF_DEVICE_PREPARE_HARDWARE
-/// \retval TLPoDP_OK
-/// \see TLBoDP_Device_ReleaseHardware
+/// \see TLBoDP_Device_PCIe_PrepareHardware
 ///
 /// To use in Windows code from the EVT_WDF_DEVICE_PREPARE_HARDWARE entry
-/// point.
-extern TLBoDP_Result TLBoDP_Device_PCIe_PrepareHardware(struct TLBoDP_Device_PCIe_s* aThis, WDFCMRESLIST aRaw, WDFCMRESLIST aTranslated);
+/// point before calling TLBoDP_Device_PCIe_PrepareHardware
+extern TLBoDP_Result TLBoDP_Device_PCIe_SetResourceLists(struct TLBoDP_Device_PCIe_s* aThis, WDFCMRESLIST aRaw, WDFCMRESLIST aTranslated);
 
 // ===== Direct Windows entry points ========================================
 

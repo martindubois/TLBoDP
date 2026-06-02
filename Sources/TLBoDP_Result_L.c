@@ -3,21 +3,35 @@
 // Copyright (C) 2026 KMS
 // License   http://www.apache.org/licenses/LICENSE-2.0
 // Product   TLBoDP
-// File      Sources/TLBoDP_Trace_L.c
+// File      Sources/TLBoDP_Result_L.c
 
 // This file must be included into the DKMS package and be compiled at
 // installation
 
 // ===== Linux ==============================================================
 #include <linux/printk.h>
+#include <linux/types.h>
 
 // ===== Includes ===========================================================
-#include <TLBoDP_Trace.h>
+#include <TLBoDP_Result_L.h>
 
 // Functions
 // //////////////////////////////////////////////////////////////////////////
 
-void TLBoDP_Trace_Error(const char* aFile, const char* aFunction, unsigned int aLine, const char* aMessage, unsigned int aInfo)
+int TLBoDP_Result_To_int(TLBoDP_Result aResult)
 {
-    printk(KERN_ERR "TLBoDP: %s %s (%u) - %s (%u)\n", aFile, aFunction, aLine, aMessage, aInfo);
+    printk(KERN_DEBUG "TLBoDP: %s( %u )\n", __FUNCTION__, aResult);
+
+    int lResult = - __LINE__;
+
+    switch (aResult)
+    {
+    case TLBoDP_OK: lResult = 0; break;
+
+    default:
+        printk(KERN_DEBUG "TLBoDP: %s - %u\n", __FUNCTION__, aResult);
+        lResult = - __LINE__;
+    }
+
+    return lResult;
 }

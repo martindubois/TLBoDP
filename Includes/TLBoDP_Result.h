@@ -34,6 +34,7 @@ typedef enum
     TLBoDP_ERROR_INVALID_CONTEXT_SIZE,
     TLBoDP_ERROR_INVALID_FUNCTION,
     TLBoDP_ERROR_INVALID_TYPES,
+    TLBoDP_ERROR_LINUX_PCI,
     TLBoDP_ERROR_NOT_AVAILABLE,
     TLBoDP_ERROR_NOT_IN_LIST,
     TLBoDP_ERROR_NOT_REGISTERED,
@@ -50,7 +51,7 @@ TLBoDP_Result;
 // Inlines functions
 // //////////////////////////////////////////////////////////////////////////
 
-static inline TLBoDP_Result_IsError(TLBoDP_Result aIn) { return TLBoDP_ERROR <= aIn; }
+static inline bool TLBoDP_Result_IsError(TLBoDP_Result aIn) { return TLBoDP_ERROR <= aIn; }
 
 #ifdef __cplusplus
     }

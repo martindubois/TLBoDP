@@ -7,11 +7,11 @@
 
 obj-m += PCIe.o
 
-FirstModule-objs := Device_L.o Driver_L.o
+PCIe-objs := Device_L.o Driver_L.o TLBoDP_Device_L.o TLBoDP_Device_PCIe_L.o TLBoDP_Result_L.o TLBoDP_SpinLock_L.o TLBoDP_Trace_L.o
 
-ccflags-y := -D_TLBoDP_LINUX_
+ccflags-y := -D_TLBoDP_LINUX_ -I../Includes
 
-ldflags-y := --whole-archive PCIe_K.a
+ldflags-y := --whole-archive PCIe_K.a --whole-archive ../Libraries/TLBoDP_K.a
 
 # ===== Target ==============================================================
 

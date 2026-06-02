@@ -11,5 +11,7 @@
 // //////////////////////////////////////////////////////////////////////////
 
 // ===== Entry points =======================================================
-extern int  Device_Probe (struct pci_dev * aPciDev, const struct pci_device_id * aId);
-extern void Device_Remove(struct pci_dev * aPciDev);
+extern int  Device_Probe  (struct pci_dev * aPciDev, const struct pci_device_id * aId);
+extern void Device_Remove (struct pci_dev * aPciDev);
+extern int  Device_Resume (struct pci_dev * aPciDev);
+extern int  Device_Suspend(struct pci_dev * aPciDev, pm_message_t aState);

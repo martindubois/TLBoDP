@@ -17,10 +17,20 @@
     #error Do not use this header file in C++
 #endif
 
-struct TLBoDevice_s;
+struct TLBoDP_Device_s;
 
 // Functions
 // //////////////////////////////////////////////////////////////////////////
+
+/// \brief Create a new TLBoCP_Device instance
+/// \param aSize_byte The context size
+/// \param aDevice    The function return the new instance here
+/// \retval TlBoDP_OK
+/// \see TLBoDP_Device_Delete
+///      TLBoDP_Device_PCIe_New
+///
+/// To use in Linux C code, from the probe entry point
+extern TLBoDP_Result TLBoDP_Device_New(unsigned int aSize_byte, struct TLBoDP_Device_s** aDevice);
 
 /// \brief Delete a TLBoDP_Device instance
 /// \param aThis The TLBoDP_Device instance to delete

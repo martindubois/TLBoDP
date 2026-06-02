@@ -121,7 +121,13 @@ extern TLBoDP_Result TLBoDP_Callback_Unregister(TLBoDP_Callback* aThis);
 /// \brief Initialize a TLBoDP_Callback_List instance
 /// \param aThis   The TLBoDP_Callback_List instance
 /// \param aDevice The TLBoDP_Device instance the list is associated with
+/// \see TLBoDP_Callback_List_Uninit
 extern void TLBoDP_Callback_List_Init(TLBoDP_Callback_List* aThis, struct TLBoDP_Device_s* aDevice);
+
+/// \brief Uninitialize a TLBoDP_Callback_List instance
+/// \param aThis   The TLBoDP_Callback_List instance
+/// \see TLBoDP_Callback_List_Init
+extern void TLBoDP_Callback_List_Uninit(TLBoDP_Callback_List* aThis);
 
 /// \brief Call callbacks
 /// \param aThis   The TLBoDP_Callback_List instance

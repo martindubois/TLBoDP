@@ -7,6 +7,14 @@
 
 #pragma once
 
+#ifdef _TLBoDP_LINUX_
+
+    // ===== Includes =======================================================
+    #include <TLBoDP_Assert_L.h>
+    #include <TLBoDP_StdTypes.h>
+
+#endif
+
 #ifdef _TLBoDP_WINDOWS_
 
     // ===== Windows ========================================================

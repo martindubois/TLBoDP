@@ -14,9 +14,6 @@
 
 #include <TLBoDP_Device_PCIe_W.h>
 
-// ===== Local ==============================================================
-#include "Device_PCIe.h"
-
 // Static function declarations
 /////////////////////////////////////////////////////////////////////////////
 
@@ -61,36 +58,31 @@ TLBoDP_Device_PCIe* TLBoDP_Device_PCIe_From_WDFINTERRUPT(WDFINTERRUPT aInterrupt
     return lResult;
 }
 
-TLBoDP_Result TLBoDP_Device_PCIe_New(WDFDEVICE_INIT* aDeviceInit, unsigned int aContextSize_byte, WDFDEVICE* aDevice)
+TLBoDP_Result TLBoDP_Device_PCIe_New(unsigned int aSize_byte, WDFDEVICE_INIT* aDeviceInit, WDFDEVICE* aDevice)
 {
-    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "( , %u bytes )\n", aContextSize_byte);
+    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "( %u bytes, ,  )\n", aSize_byte);
 
     ASSERT(nullptr != aDevice);
 
-    unsigned int lContextSize_byte = sizeof(TLBoDP_Device_PCIe);
+    unsigned int lSize_byte = sizeof(TLBoDP_Device_PCIe);
 
-    if (0 < aContextSize_byte)
+    if (0 < aSize_byte)
     {
-        ASSERT(lContextSize_byte <= aContextSize_byte);
+        ASSERT(lSize_byte <= aSize_byte);
 
-        lContextSize_byte = aContextSize_byte;
+        lSize_byte = aSize_byte;
     }
 
     WDFDEVICE lDevice;
 
-    auto lResult = TLBoDP_Device_New(aDeviceInit, lContextSize_byte, &lDevice);
+    auto lResult = TLBoDP_Device_New(lSize_byte, aDeviceInit, &lDevice);
     if (TLBoDP_OK == lResult)
     {
         ASSERT(nullptr != lDevice);
         
         auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(lDevice);
 
-        Device_PCIe_Init(lThis);
-
-        for (unsigned int i = 0; i < TLBoDP_DEVICE_PCIe_INTERRUPT_QTY; i++)
-        {
-            lThis->mInterrupts[i] = nullptr;
-        }
+        TLBoDP_Device_PCIe_Init(lThis);
 
         *aDevice = lDevice;
     }
@@ -98,22 +90,23 @@ TLBoDP_Result TLBoDP_Device_PCIe_New(WDFDEVICE_INIT* aDeviceInit, unsigned int a
     return lResult;
 }
 
-TLBoDP_Result TLBoDP_Device_PCIe_PrepareHardware(TLBoDP_Device_PCIe* aThis, WDFCMRESLIST aRaw, WDFCMRESLIST aTranslated)
+TLBoDP_Result TLBoDP_Device_PCIe_PrepareHardware(TLBoDP_Device_PCIe* aThis)
 {
-    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "( , ,  )\n");
+    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "(  )\n");
 
-    ASSERT(nullptr != aTranslated);
+    ASSERT(nullptr != aThis->mRaw);
+    ASSERT(nullptr != aThis->mTranslated);
 
-    auto lCount = WdfCmResourceListGetCount(aTranslated);
+    auto lCount = WdfCmResourceListGetCount(aThis->mTranslated);
 
     auto lResult = TLBoDP_NOT_INITIALIZED;
 
     for (unsigned int i = 0; i < lCount; i++)
     {
-        auto lDesc = WdfCmResourceListGetDescriptor(aTranslated, i);
+        auto lDesc = WdfCmResourceListGetDescriptor(aThis->mTranslated, i);
         switch (lDesc->Type)
         {
-        case CmResourceTypeInterrupt: lResult = PrepareInterrupt(aThis, lDesc, WdfCmResourceListGetDescriptor(aRaw, i)); break;
+        case CmResourceTypeInterrupt: lResult = PrepareInterrupt(aThis, lDesc, WdfCmResourceListGetDescriptor(aThis->mRaw, i)); break;
         case CmResourceTypeMemory   : lResult = PrepareMemory   (aThis, lDesc); break;
         }
 
@@ -181,7 +174,9 @@ NTSTATUS TLBoDP_Device_PCIe_PrepareHardware_W(WDFDEVICE aDevice, WDFCMRESLIST aR
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(aDevice);
     ASSERT(nullptr != lThis);
 
-    auto lRet = TLBoDP_Device_PCIe_PrepareHardware(lThis, aRaw, aTranslated);
+    TLBoDP_Device_PCIe_SetResourceLists(lThis, aRaw, aTranslated);
+
+    auto lRet = TLBoDP_Device_PCIe_PrepareHardware(lThis);
 
     return TLBoDP_Result_To_NTSTATUS(lRet);
 }
@@ -348,7 +343,7 @@ BOOLEAN Interrupt_ISR(WDFINTERRUPT aInterrupt, ULONG aMessageId)
     auto lThis = TLBoDP_Device_PCIe_From_WDFINTERRUPT(aInterrupt);
     ASSERT(nullptr != lThis);
 
-    Device_PCIe_Interrupt_0(lThis, aInterrupt);
+    TLBoDP_Device_PCIe_Interrupt_0(lThis, aInterrupt);
 
     return TRUE;
 }
