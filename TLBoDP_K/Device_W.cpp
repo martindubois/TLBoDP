@@ -13,9 +13,6 @@
 
 #include <TLBoDP_Device_W.h>
 
-// ===== Local ==============================================================
-#include "Device.h"
-
 // Data type
 // //////////////////////////////////////////////////////////////////////////
 
@@ -36,9 +33,9 @@ TLBoDP_Device* TLBoDP_Device_From_WDFDEVICE(WDFDEVICE aDevice)
     return lResult;
 }
 
-TLBoDP_Result TLBoDP_Device_New(WDFDEVICE_INIT* aDeviceInit, unsigned int aContextSize_byte, WDFDEVICE* aDevice)
+TLBoDP_Result TLBoDP_Device_New(unsigned int aSize_byte, WDFDEVICE_INIT* aDeviceInit, WDFDEVICE* aDevice)
 {
-    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "( , %u bytes )\n", aContextSize_byte);
+    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "( %u bytes, , )\n", aSize_byte);
 
     ASSERT(nullptr != aDeviceInit);
     ASSERT(nullptr != aDevice);
@@ -47,11 +44,11 @@ TLBoDP_Result TLBoDP_Device_New(WDFDEVICE_INIT* aDeviceInit, unsigned int aConte
 
     WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE(&lAttr, TLBoDP_Device);
 
-    if (0 < aContextSize_byte)
+    if (0 < aSize_byte)
     {
-        ASSERT(sizeof(TLBoDP_Device) <= aContextSize_byte);
+        ASSERT(sizeof(TLBoDP_Device) <= aSize_byte);
 
-        lAttr.ContextSizeOverride = aContextSize_byte;
+        lAttr.ContextSizeOverride = aSize_byte;
     }
 
     WDFDEVICE lDevice;

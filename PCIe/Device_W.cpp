@@ -14,6 +14,7 @@
 #include <TLBoDP_Result_W.h>
 
 // ===== Local ==============================================================
+#include "Device.h"
 #include "Device_W.h"
 
 // Static function declarations
@@ -103,7 +104,7 @@ NTSTATUS PrepareHardware(WDFDEVICE aDevice, WDFCMRESLIST aRaw, WDFCMRESLIST aTra
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(aDevice);
     ASSERT(nullptr != lThis);
 
-    TLBoDP_Device_PCIEe_SetResouceLists(lThis, aRaw, aTranslated);
+    TLBoDP_Device_PCIe_SetResourceLists(lThis, aRaw, aTranslated);
 
     auto lRet = Device_PrepareHardware(lThis);
 

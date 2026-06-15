@@ -18,6 +18,10 @@ Book of Driver Programming**.
 
 [Chapter 3 - PCIe Driver](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter03_PCIeDriver.pdf)
 
+[Chapter 4 - Security](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter04_Security.pdf)
+
+[Chapter 5 - Driver Interface](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter05_DriverInterface.pdf)
+
     ===== Francais =====
 
 Ce depot contient les exemples et le code presentes dans **Le petit livre de
@@ -30,3 +34,7 @@ la programation de pilote**.
 [Chapitre 2 - Premier module](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre02_PremierModule.pdf)
 
 [Chapitre 3 - Pilote PCIe](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre03_PilotePCIe.pdf)
+
+[Chapitre 4 - Securite](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre04_Securite.pdf)
+
+[Chapitre 5 - Interface de pilote](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre05_InterfaceDePilote.pdf)

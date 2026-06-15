@@ -123,6 +123,7 @@
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Device.cpp" />
     <ClCompile Include="Device_W.cpp" />
     <ClCompile Include="Driver_W.cpp" />
   </ItemGroup>

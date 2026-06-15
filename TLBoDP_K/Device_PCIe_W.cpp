@@ -90,6 +90,17 @@ TLBoDP_Result TLBoDP_Device_PCIe_New(unsigned int aSize_byte, WDFDEVICE_INIT* aD
     return lResult;
 }
 
+void TLBoDP_Device_PCIe_SetResourceLists(struct TLBoDP_Device_PCIe_s* aThis, WDFCMRESLIST aRaw, WDFCMRESLIST aTranslated)
+{
+    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "( , ,  )\n");
+
+    ASSERT(nullptr != aRaw);
+    ASSERT(nullptr != aTranslated);
+
+    aThis->mRaw        = aRaw;
+    aThis->mTranslated = aTranslated;
+}
+
 TLBoDP_Result TLBoDP_Device_PCIe_PrepareHardware(TLBoDP_Device_PCIe* aThis)
 {
     // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "(  )\n");
@@ -203,7 +214,7 @@ TLBoDP_Result PrepareInterrupt(TLBoDP_Device_PCIe* aThis, CM_PARTIAL_RESOURCE_DE
     ASSERT(nullptr != aTranslated);
     ASSERT(nullptr != aRaw);
 
-    ASSERT(TLBoDP_DEVICE_PCIe_INTERRUPT_QTY > aThis->mInt_Count);
+    ASSERT(TLBoDP_Device_PCIe_INTERRUPT_QTY > aThis->mInt_Count);
 
     WDF_INTERRUPT_CONFIG lConfig;
 
@@ -241,7 +252,7 @@ TLBoDP_Result PrepareMemory(TLBoDP_Device_PCIe* aThis, CM_PARTIAL_RESOURCE_DESCR
 
     ASSERT(nullptr != aTranslated);
 
-    ASSERT(TLBoDP_DEVICE_PCIe_MEMORY_QTY > aThis->mMem_Count);
+    ASSERT(TLBoDP_Device_PCIe_MEMORY_QTY > aThis->mMem_Count);
 
     auto lIndex = aThis->mMem_Count;
 
@@ -270,7 +281,7 @@ void ReleaseMemories(TLBoDP_Device_PCIe* aThis)
 {
     // DbgPrintEx(DPFLTR_IHVDRIVER_ID, 0, PREFIX __FUNCTION__ "(  )\n");
 
-    ASSERT(TLBoDP_DEVICE_PCIe_MEMORY_QTY > aThis->mMem_Count);
+    ASSERT(TLBoDP_Device_PCIe_MEMORY_QTY > aThis->mMem_Count);
 
     for (unsigned int i = 0; i < aThis->mMem_Count; i++)
     {
@@ -299,7 +310,7 @@ void Interrupt_DPC(WDFINTERRUPT aInterrupt, WDFOBJECT aDevice)
     auto lThis = TLBoDP_Device_PCIe_From_WDFDEVICE(reinterpret_cast<WDFDEVICE>(aDevice));
     ASSERT(nullptr != lThis);
 
-    Device_PCIe_Interrupt_1(lThis, aInterrupt);
+    TLBoDP_Device_PCIe_Interrupt_1(lThis, reinterpret_cast<uint64_t>(aInterrupt));
 }
 
 NTSTATUS Interrupt_Disable(WDFINTERRUPT aInterrupt, WDFDEVICE aDevice)
@@ -343,7 +354,7 @@ BOOLEAN Interrupt_ISR(WDFINTERRUPT aInterrupt, ULONG aMessageId)
     auto lThis = TLBoDP_Device_PCIe_From_WDFINTERRUPT(aInterrupt);
     ASSERT(nullptr != lThis);
 
-    TLBoDP_Device_PCIe_Interrupt_0(lThis, aInterrupt);
+    TLBoDP_Device_PCIe_Interrupt_0(lThis, reinterpret_cast<uint64_t>(aInterrupt));
 
     return TRUE;
 }

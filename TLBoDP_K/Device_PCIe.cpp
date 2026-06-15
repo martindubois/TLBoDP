@@ -26,7 +26,7 @@ void TLBoDP_Device_PCIe_Init(TLBoDP_Device_PCIe* aThis)
         aThis->mInterrupts[i] = 0;
     }
 
-    for (unsigned int i = 0; i < TLBoDP_Device_PCIe_MEMORY_QTY; i++)
+    for (i = 0; i < TLBoDP_Device_PCIe_MEMORY_QTY; i++)
     {
         TLBoDP_Mapping_Init(aThis->mMemories + i);
     }

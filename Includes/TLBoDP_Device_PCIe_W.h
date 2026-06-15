@@ -64,7 +64,7 @@ extern TLBoDP_Result TLBoDP_Device_PCIe_New(unsigned int aSize_byte, WDFDEVICE_I
 ///
 /// To use in Windows code from the EVT_WDF_DEVICE_PREPARE_HARDWARE entry
 /// point before calling TLBoDP_Device_PCIe_PrepareHardware
-extern TLBoDP_Result TLBoDP_Device_PCIe_SetResourceLists(struct TLBoDP_Device_PCIe_s* aThis, WDFCMRESLIST aRaw, WDFCMRESLIST aTranslated);
+extern void TLBoDP_Device_PCIe_SetResourceLists(struct TLBoDP_Device_PCIe_s* aThis, WDFCMRESLIST aRaw, WDFCMRESLIST aTranslated);
 
 // ===== Direct Windows entry points ========================================
 
