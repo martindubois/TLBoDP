@@ -4,8 +4,10 @@
 -fno-exceptions
 -fno-pic
 -fno-stack-check
+-fno-stack-protector
 -funit-at-a-time
 -m64
 -mcmodel=kernel
+-mno-red-zone
 -nostdinc
 -O2
