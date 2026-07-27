@@ -1,7 +1,7 @@
 
 // Author    KMS - Martin Dubois, P. Eng.
 // Copyright (C) 2026 KMS
-// License   http://www.apache.org/licenses/LICENSE-2.0
+// License   GPL-2.0 https://opensource.org/license/gpl-2.0
 // Product   TLBoDP
 // File      PCIe/Device.cpp
 
@@ -28,7 +28,7 @@ void Device_D0Exit(TLBoDP_Device_PCIe* aThis)
     //              also save information to be retored after a sleep or
     //              hybernation.
 
-    return TLBoDP_Device_PCIe_D0Exit(aThis);
+    TLBoDP_Device_PCIe_D0Exit(aThis);
 }
 
 TLBoDP_Result Device_PrepareHardware(TLBoDP_Device_PCIe* aThis)

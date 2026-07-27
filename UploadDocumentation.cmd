@@ -2,7 +2,7 @@
 
 rem Author    KMS - Martin Dubois, P. Eng.
 rem Copyright (C) 2026 KMS
-rem Lisense   http://www.apache.org/licenses/LICENSE-2.0
+rem Lisense   GPL-2.0 https://opensource.org/license/gpl-2.0
 rem Product   TLBoDP
 rem File      UploadDocumentation.cmd
 
