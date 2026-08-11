@@ -12,15 +12,29 @@ Book of Driver Programming**.
 
 [Introduction](https://www.kms-quebec.com/TLBoDP/TLBoDP_Introduction.pdf)
 
-[Chapter 1 - Prior Knowledge](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter01_PriorKnowledge.pdf)
+[Part 1 - Base](https://www.kms-quebec.com/TLBoDP/TLBoDP_1_Base.pdf)
 
-[Chapter 2 - First Module](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter02_FirstModule.pdf)
+[Chapter 1-01 - Prior Knowledge](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-01_PriorKnowledge.pdf)
 
-[Chapter 3 - PCIe Driver](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter03_PCIeDriver.pdf)
+[Chapter 1-02 - First Module](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-02_FirstModule.pdf)
 
-[Chapter 4 - Security](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter04_Security.pdf)
+[Chapter 1-03 - C/C++ for Driver](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-03_C_C++_ForDriver.pdf)
 
-[Chapter 5 - Driver Interface](https://www.kms-quebec.com/TLBoDP/TLBoDP_Chapter05_DriverInterface.pdf)
+[Chapter 1-04 - PCIe Driver](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-03_PCIeDriver.pdf)
+
+[Chapter 1-05 - Security](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-04_Security.pdf)
+
+[Chapter 1-06 - Memory](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-05_Memory.pdf)
+
+[Chapter 1-07 - Driver Interface](https://www.kms-quebec.com/TLBoDP/TLBoDP_1-06_DriverInterface.pdf)
+
+[Part 2 - Advanced](https://www.kms-quebec.com/TLBoDP/TLBoDP_2_Advanced.pdf)
+
+[Part 3 - Linux](https://www.kms-quebec.com/TLBoDP/TLBoDP_3_Linux.pdf)
+
+[Part 4 - Windows](https://www.kms-quebec.com/TLBoDP/TLBoDP_4_Windows.pdf)
+
+[Part 5 - Microcontroller](https://www.kms-quebec.com/TLBoDP/TLBoDP_5_Microcontroller.pdf)
 
     ===== Francais =====
 
@@ -29,12 +43,26 @@ la programation de pilote**.
 
 [Introduction](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Introduction.pdf)
 
-[Chapitre 1 - Connaissances prealables](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre01_ConnaissancesPrealables.pdf)
+[Partie 1 - Base](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1_Base.pdf)
 
-[Chapitre 2 - Premier module](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre02_PremierModule.pdf)
+[Chapitre 1-01 - Connaissances prealables](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-01_ConnaissancesPrealables.pdf)
 
-[Chapitre 3 - Pilote PCIe](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre03_PilotePCIe.pdf)
+[Chapitre 1-02 - Premier module](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-02_PremierModule.pdf)
 
-[Chapitre 4 - Securite](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre04_Securite.pdf)
+[Chapiter 1-03 - C/C++ pour pilote](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-03_C_C++_PourPilote.pdf)
 
-[Chapitre 5 - Interface de pilote](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_Chapitre05_InterfaceDePilote.pdf)
+[Chapitre 1-04 - Pilote PCIe](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-03_PilotePCIe.pdf)
+
+[Chapitre 1-05 - Securite](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-04_Securite.pdf)
+
+[Chapitre 1-06 - Memoire](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-05_Memoire.pdf)
+
+[Chapitre 1-07 - Interface de pilote](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_1-06_InterfaceDePilote.pdf)
+
+[Partie 2 - Avance](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_2_Avance.pdf)
+
+[Partie 3 - Linux](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_3_Linux.pdf)
+
+[Partie 4 - Windows](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_4_Windows.pdf)
+
+[Partie 5 - Microcontroleur](https://www.kms-quebec.com/LPLDLPDP/LPLDLPDP_5_Microcontroleur.pdf)
